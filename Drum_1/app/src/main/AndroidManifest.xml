@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.android.drum_1">
+
+    <uses-feature
+        android:name="android.software.midi"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="landscape" />
+
+        <activity
+            android:name=".selectActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".select2Activity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".select3Activity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".select4Activity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".BeforeActivity"
+            android:screenOrientation="landscape"
+             />
+        <activity
+            android:name=".ResultActivity"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity android:name=".MenuActivity"
+            android:screenOrientation="landscape">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+    </application>
+
+</manifest>

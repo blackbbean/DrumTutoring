@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Drum_1</string>
+    <string-array name="senders">
+        <item>"none"</item>
+    </string-array>
+    <string name="header_text">Select DEVICES :) </string>
+    <string name="clear_log">Clear Log</string>
+    <string name="keep_screen_on">Keep Screen On</string>
+    <string name="title_activity_select2">select2Activity</string>
+</resources>

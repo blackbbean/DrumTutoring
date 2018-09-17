@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Select Rudiment"
+        android:textSize="15pt"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/rudi21Btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rudi21"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"/>
+
+        <Button
+            android:id="@+id/rudi22Btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rudi22"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"/>
+
+        <Button
+            android:id="@+id/rudi23Btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rudi23"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"/>
+
+        <Button
+            android:id="@+id/rudi24Btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RUDI24"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"/>
+
+        <Button
+            android:id="@+id/rudi25Btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RUDI25"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        >
+
+        <Button
+            android:id="@+id/rudi26Btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RUDI26"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"/>
+
+        <Button
+            android:id="@+id/rudi27Btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RUDI27"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"/>
+
+        <Button
+            android:id="@+id/rudi28Btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RUDI28"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"/>
+
+        <Button
+            android:id="@+id/rudi29Btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RUDI29"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"/>
+
+        <Button
+            android:id="@+id/rudi30Btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RUDI30"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"/>
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>
+
+
+
+

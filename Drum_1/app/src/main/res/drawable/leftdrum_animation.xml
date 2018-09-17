@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/leftAni"
+    android:oneshot="false" >
+    <item
+        android:drawable="@drawable/l_blue"
+        android:duration="125"/>
+    <item
+        android:drawable="@drawable/l_black"
+        android:duration="125"/>
+
+</animation-list>
