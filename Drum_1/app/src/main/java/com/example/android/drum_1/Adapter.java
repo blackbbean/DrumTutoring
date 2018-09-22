@@ -47,7 +47,7 @@ public class Adapter extends PagerAdapter {
             @Override
             public void onClick(View view) {
                 if(position==0){
-                    Intent selectIntent = new Intent(context,BeforeActivity.class);
+                    Intent selectIntent = new Intent(context,selectRudimentActivity.class);
                     selectIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(selectIntent);
                 }

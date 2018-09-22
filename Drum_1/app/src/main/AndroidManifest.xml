@@ -19,7 +19,6 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="landscape" />
-
         <activity
             android:name=".selectActivity"
             android:screenOrientation="landscape" />
@@ -34,22 +33,22 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".BeforeActivity"
-            android:screenOrientation="landscape"
-             />
+            android:screenOrientation="landscape" />
         <activity
             android:name=".ResultActivity"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.Dialog" />
-        <activity android:name=".MenuActivity"
+        <activity
+            android:name=".MenuActivity"
             android:screenOrientation="landscape">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <activity android:name=".selectRudimentActivity"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

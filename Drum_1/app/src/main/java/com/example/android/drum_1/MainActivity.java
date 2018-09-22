@@ -116,8 +116,9 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
 
 
         Intent intent = getIntent();
-        String rudiment = intent.getStringExtra("player");
-        currentRudi = Integer.valueOf(rudiment);
+
+        int rudimentNo = intent.getIntExtra("player",-1);
+        currentRudi =rudimentNo;
         setMusicSheet(currentRudi);
 
 
