@@ -6,11 +6,10 @@ import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
+
+import com.example.android.drum_1.Activity.selectRudimentActivity;
 
 /**
  * Created by Minjeong Kim on 2018-09-17.

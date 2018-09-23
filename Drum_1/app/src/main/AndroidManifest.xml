@@ -17,14 +17,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".ResultActivity"
+            android:name=".Activity.ResultActivity"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.Dialog" />
         <activity
-            android:name=".MenuActivity"
+            android:name=".Activity.MenuActivity"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,8 +32,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".selectRudimentActivity"
-            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".Activity.selectRudimentActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".Activity.IntroActivity"
+            android:screenOrientation="landscape"
+            ></activity>
     </application>
 
 </manifest>

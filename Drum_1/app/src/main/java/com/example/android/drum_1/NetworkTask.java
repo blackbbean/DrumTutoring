@@ -3,11 +3,11 @@ package com.example.android.drum_1;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import java.io.BufferedReader;
+import com.example.android.drum_1.Activity.ResultActivity;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -18,7 +18,7 @@ import java.net.UnknownHostException;
  */
 
 
-class NetworkTask extends AsyncTask<Void, Void, Void> {
+public class NetworkTask extends AsyncTask<Void, Void, Void> {
 
 
     String dstAddress;
@@ -27,7 +27,7 @@ class NetworkTask extends AsyncTask<Void, Void, Void> {
     PrintWriter out;
 
 
-    NetworkTask(String addr, int port) {
+    public NetworkTask(String addr, int port) {
         dstAddress = addr;
         dstPort = port;
     }

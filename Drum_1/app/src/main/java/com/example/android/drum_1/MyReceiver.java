@@ -1,14 +1,12 @@
 package com.example.android.drum_1;
 
-import android.content.Intent;
 import android.media.midi.MidiReceiver;
 import android.util.Log;
-import android.view.Menu;
 
-import org.billthefarmer.mididriver.MidiDriver;
+import com.example.android.drum_1.Activity.MainActivity;
+import com.example.android.drum_1.Activity.MenuActivity;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 

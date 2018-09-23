@@ -1,4 +1,4 @@
-package com.example.android.drum_1;
+package com.example.android.drum_1.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +13,7 @@ import android.widget.ViewSwitcher;
 import com.example.android.drum_1.AdapterPackage.RudimentAdapter;
 import com.example.android.drum_1.Common.Common;
 import com.example.android.drum_1.Model.Rudiment;
+import com.example.android.drum_1.R;
 
 import it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow;
 

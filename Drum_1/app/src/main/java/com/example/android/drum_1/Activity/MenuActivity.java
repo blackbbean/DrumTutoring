@@ -1,4 +1,4 @@
-package com.example.android.drum_1;
+package com.example.android.drum_1.Activity;
 
 import android.content.Intent;
 import android.media.Image;
@@ -8,15 +8,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.android.drum_1.Adapter;
+import com.example.android.drum_1.NetworkTask;
+import com.example.android.drum_1.R;
+
 public class MenuActivity extends AppCompatActivity {
 
     Adapter adapter;
     ViewPager viewPager;
     public static NetworkTask socketIns;
-    private String ip = "172.20.10.6";
     private int port = 9999;
-    public static int currentPos;
-    private ImageButton imageButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +30,9 @@ public class MenuActivity extends AppCompatActivity {
         adapter = new Adapter(this);
         viewPager.setAdapter(adapter);
 
-
-
+        Intent intent = getIntent();
+        String ip = intent.getStringExtra("ipAddress");
         socketIns = new NetworkTask(ip,port);
         socketIns.execute();
     }
-
-
-
-
-
 }

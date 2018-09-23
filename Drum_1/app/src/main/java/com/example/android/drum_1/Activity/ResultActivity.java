@@ -1,4 +1,4 @@
-package com.example.android.drum_1;
+package com.example.android.drum_1.Activity;
 
 import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.example.android.drum_1.R;
 
 public class ResultActivity extends Activity {
 

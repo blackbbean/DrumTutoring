@@ -1,5 +1,6 @@
 package com.example.android.drum_1.Common;
 
+import com.example.android.drum_1.Model.DBHelper;
 import com.example.android.drum_1.Model.Rudiment;
 
 import java.util.ArrayList;

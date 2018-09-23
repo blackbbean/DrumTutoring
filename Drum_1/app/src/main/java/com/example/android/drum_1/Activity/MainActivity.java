@@ -1,10 +1,8 @@
-package com.example.android.drum_1;
+package com.example.android.drum_1.Activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
-import android.media.Image;
 import android.media.midi.MidiDeviceInfo;
 import android.media.midi.MidiManager;
 import android.media.midi.MidiReceiver;
@@ -23,16 +21,20 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.drum_1.MidiFramer;
+import com.example.android.drum_1.MidiOutputPortSelector;
+import com.example.android.drum_1.MidiPortWrapper;
+import com.example.android.drum_1.MidiSynth;
+import com.example.android.drum_1.MyReceiver;
+import com.example.android.drum_1.R;
+import com.example.android.drum_1.ScopeLogger;
+
 import org.billthefarmer.mididriver.MidiDriver;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.net.Socket;
 import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiDriver.OnMidiStartListener {
