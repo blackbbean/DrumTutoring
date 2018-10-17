@@ -6,6 +6,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.media.midi.MidiDeviceInfo;
 import android.media.midi.MidiManager;
 import android.media.midi.MidiReceiver;
+import android.os.CountDownTimer;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.android.drum_1.MidiFramer;
 import com.example.android.drum_1.MidiOutputPortSelector;
+import com.example.android.drum_1.MidiPortSelector;
 import com.example.android.drum_1.MidiPortWrapper;
 import com.example.android.drum_1.MidiSynth;
 import com.example.android.drum_1.MyReceiver;
@@ -57,18 +59,15 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
     AnimationDrawable leftAni;
     AnimationDrawable rightAni;
 
+    private int count = 5;
+    private CountDownTimer countDownTimer;
+    private TextView timerText;
+    private boolean drumConnected = false;
 
-    private ImageView drum15;
+
+
     public static long realStartTime;
 
-
-
-    /*
-    private String ip = "172.30.1.17";
-    private int port = 9999;
-    private Socket socket;
-    public static BufferedWriter networkWriter;
-    */
 
 
     String noteDirection;
@@ -78,7 +77,8 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
     public static long trash;
     public static int currentRudi;
     public static boolean resultFlag = false;
-    ResultThread rt;
+    public static float scoreInt = -2;
+
 
 
     //onCreate : 레이아웃 생성,초기화 컴포넌트.
@@ -93,9 +93,9 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
             actionBar.setDisplayShowTitleEnabled(false);
         }
 
-        rt = new ResultThread();
+        //ResultThread rt = new ResultThread();
         //t = new Thread(this);
-
+        timerText = (TextView)findViewById(R.id.timer);
         m = (MidiManager) getApplicationContext().getSystemService(Context.MIDI_SERVICE);
         logreceiver = new MyReceiver(this, midiDriver);
         MidiFramer connectFramer = new MidiFramer(logreceiver);
@@ -111,14 +111,9 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
         leftAni= (AnimationDrawable)drum0.getBackground();
 
 
-        /*
-        leftDrumView = (ImageView) findViewById(R.id.leftImage);
-        rightDrumView = (ImageView) findViewById(R.id.rightImage);
-        */
 
 
         Intent intent = getIntent();
-
         int rudimentNo = intent.getIntExtra("player",-1);
         currentRudi =rudimentNo;
         setMusicSheet(currentRudi);
@@ -127,17 +122,12 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                realStartTime = System.nanoTime();
-                flag = false;
-                trash = realStartTime;
-                PlayMusic();
+                timerFunc();
             }
         });
 
 
-        //mLog = (TextView) findViewById(R.id.log);
-        //mScroller = (ScrollView) findViewById(R.id.scroll);
-        //MidiManager midiManager, Activity activity, int spinnerId
+ 
         mLogSenderSelector = new MidiOutputPortSelector(m, this, R.id.spinner_senders) {
             @Override
             public void onPortSelected(final MidiPortWrapper wrapper) {
@@ -146,13 +136,8 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
                     mLogLines.clear();
                     MidiDeviceInfo deviceInfo = wrapper.getDeviceInfo();
                     if (deviceInfo == null) {
-                        //log(getString(R.string.header_text));
                     } else {
-                        //log(MidiPrinter.formatDeviceInfo(deviceInfo));
-                        Toast.makeText(getApplicationContext(), "Drum Connected", Toast.LENGTH_SHORT).show();
 
-
-                        //server 통신
                     }
                 }
             }
@@ -162,9 +147,25 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
 
         //리스너!
         midiDriver.setOnMidiStartListener(this);
-        rt.start();
+        //점수내는 화면으로 들어가는 ...
+        //rt.start();
+        new Thread(new Runnable() {
+            @Override public void run() {
+                while (true) {
+                    //System.out.println("checking");
+                    if (resultFlag && scoreInt!=-2){
+                        Intent intent = new Intent(getApplicationContext(),ResultActivity.class);
+                        resultFlag=false;
+                        startActivity(intent);
+                    }
+                }
+            }
+        }).start();
+
+
 
     }// end of onCreate
+
 
 
 
@@ -208,8 +209,6 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
     //rudiment에 대해서 play note가 달라짐
     void PlayMusic() {
 
-
-        //TODO 루디먼트별~~~
         switch (currentRudi) {
             case 1:
                 InputStream inputStream = getResources().openRawResource(R.raw.rudi1);
@@ -300,14 +299,6 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
                         }
                     }
 
-                    /*
-                    try {
-                        int temp = (int) ((150 * beat) / 24);
-                        Thread.sleep(temp);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    */
                 }//end of for loop
 
             }
@@ -403,31 +394,34 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
         Log.d(this.getClass().getName(), "onMidiStart()");
     }
 
-
-    /*
-    @Override
-    public void run() {
-        try {
-            socket = new Socket(ip,port);
-            networkWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-            Log.i("mainActivity","socket connected");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    void timerFunc(){
+        countDownTimer();
+        countDownTimer.start();
     }
-    */
-//end of main activity class
 
-    class ResultThread extends Thread {
-        public void run() {
-            while (true) {
-                if (ResultActivity.scoreFlag){
-                    ResultActivity.scoreFlag = false;
-                    Intent intent = new Intent(getApplicationContext(),ResultActivity.class);
-                    startActivity(intent);
-                }
+
+    public void countDownTimer(){
+        countDownTimer = new CountDownTimer(6000,1000) {
+            @Override
+            public void onTick(long l) {
+
+             timerText.setText(String.valueOf(count));
+             count--;
+
+
             }
-        }
+
+            @Override
+            public void onFinish() {
+                timerText.setVisibility(View.INVISIBLE);
+                realStartTime = System.nanoTime();
+                trash = realStartTime;
+                PlayMusic();
+            }
+        };
     }
+
+
+
 
 }

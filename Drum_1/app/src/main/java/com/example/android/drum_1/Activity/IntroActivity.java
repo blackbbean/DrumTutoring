@@ -23,19 +23,17 @@ public class IntroActivity extends AppCompatActivity {
         inputIP = (EditText)findViewById(R.id.ipText);
         joinBtn = (Button)findViewById(R.id.joinBtn);
 
-        final String ip = inputIP.getText().toString();
+
 
 
         joinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),MenuActivity.class);
+                final String ip = inputIP.getText().toString();
                 intent.putExtra("ipAddress",ip);
                 startActivity(intent);
             }
         });
-
-
-
     }
 }

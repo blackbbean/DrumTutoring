@@ -7,4 +7,5 @@
     <string name="clear_log">Clear Log</string>
     <string name="keep_screen_on">Keep Screen On</string>
     <string name="title_activity_select2">select2Activity</string>
+    <string name="startTag">START!!</string>
 </resources>

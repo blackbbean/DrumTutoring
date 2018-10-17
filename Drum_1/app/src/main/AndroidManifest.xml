@@ -26,18 +26,23 @@
         <activity
             android:name=".Activity.MenuActivity"
             android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Activity.selectRudimentActivity"
             android:screenOrientation="landscape" />
         <activity android:name=".Activity.IntroActivity"
             android:screenOrientation="landscape"
-            ></activity>
+            >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
+        </activity>
     </application>
 
 </manifest>

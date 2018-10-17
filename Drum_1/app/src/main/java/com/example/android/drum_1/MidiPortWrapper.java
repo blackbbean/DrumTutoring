@@ -71,6 +71,10 @@ public class MidiPortWrapper {
         return mPortIndex;
     }
 
+    public String getmString(){
+        return mString;
+    }
+
     public MidiDeviceInfo getDeviceInfo() {
         return mInfo;
     }

@@ -12,5 +12,6 @@ import java.util.List;
 
 public class Common {
     public static List<Rudiment> rudimentList = new ArrayList<>();
+    public static boolean connectFlag;
 
 }

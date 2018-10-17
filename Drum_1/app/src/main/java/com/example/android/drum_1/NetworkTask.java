@@ -3,6 +3,7 @@ package com.example.android.drum_1;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.android.drum_1.Activity.MainActivity;
 import com.example.android.drum_1.Activity.ResultActivity;
 
 import java.io.BufferedWriter;
@@ -47,9 +48,9 @@ public class NetworkTask extends AsyncTask<Void, Void, Void> {
             while ((bytesRead = inputStream.read(buffer)) != -1) {
                 String receivedData = new String(buffer,0,bytesRead,"UTF-8");
                 Log.i("NetworkTask","ReceivedData  =   " + receivedData);
+                MainActivity.scoreInt = Float.valueOf(receivedData);
                 if(isDigit(receivedData)){
-                    ResultActivity.scoreFlag = true;
-                    ResultActivity.scoreInt = Integer.valueOf(receivedData);
+                    MainActivity.resultFlag = true;
                 }
                 buffer = new byte[1024];
 

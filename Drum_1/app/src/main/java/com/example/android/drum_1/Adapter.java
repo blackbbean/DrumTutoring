@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.android.drum_1.Activity.selectRudimentActivity;
 
@@ -49,6 +50,9 @@ public class Adapter extends PagerAdapter {
                     Intent selectIntent = new Intent(context,selectRudimentActivity.class);
                     selectIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(selectIntent);
+                }
+                else{
+                    Toast.makeText(context,"아직 개발중 찡긋",Toast.LENGTH_SHORT).show();
                 }
             }
         });

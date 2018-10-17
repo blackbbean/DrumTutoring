@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.HashSet;
 
@@ -33,6 +34,7 @@ public abstract class MidiPortSelector extends MidiManager.DeviceCallback {
     protected MidiManager mMidiManager;
     protected Activity mActivity;
     private MidiPortWrapper mCurrentWrapper;
+    public static boolean connectFlag = false;
 
     /**
      * @param midiManager
@@ -62,7 +64,12 @@ public abstract class MidiPortSelector extends MidiManager.DeviceCallback {
                     public void onItemSelected(AdapterView<?> parent, View view,
                                                int pos, long id) {
                         mCurrentWrapper = mAdapter.getItem(pos);
+                        //여기서!!!
+                        //if(!connectFlag && mCurrentWrapper.getmString()!="- - - - - -"){
+                        //connectFlag=true;
+                        //MidiOutputPortSelector
                         onPortSelected(mCurrentWrapper);
+
                     }
 
                     public void onNothingSelected(AdapterView<?> parent) {
@@ -117,6 +124,7 @@ public abstract class MidiPortSelector extends MidiManager.DeviceCallback {
                 clearSelection();
             }
             mAdapter.notifyDataSetChanged();
+            //connectFlag=false;
             Log.i(MidiConstants.TAG, wrapper + " was removed");
         }
     }

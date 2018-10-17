@@ -12,43 +12,15 @@ import com.example.android.drum_1.R;
 public class ResultActivity extends Activity {
 
 
-    ProgressBar loading;
-    TextView noticeText;
-    public static boolean scoreFlag=false;
-    public static int scoreInt;
-    ScoreThread st;
+
+    private TextView noticeText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_result);
-        loading = (ProgressBar)findViewById(R.id.showProgress);
         noticeText = (TextView)findViewById(R.id.notice);
-        st = new ScoreThread();
-        loading.setVisibility(ProgressBar.VISIBLE);
-        loading.setIndeterminate(true);
-        loading.setMax(100);
-
-        st.start();
-
+        noticeText.setText("Your score is " + MainActivity.scoreInt);
+        MainActivity.scoreInt=-2;
     }
-
-    class ScoreThread extends Thread {
-
-        public void run() {
-            if(scoreFlag){
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        loading.setVisibility(ProgressBar.INVISIBLE);
-                        noticeText.setText("Your score is " + scoreInt);
-                    }
-                });
-
-            }
-
-        }
-    }
-
-
 }

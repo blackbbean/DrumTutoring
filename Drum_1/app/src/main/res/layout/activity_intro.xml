@@ -3,26 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/stage"
 
     tools:context="com.example.android.drum_1.Activity.IntroActivity">
 
-    <EditText
-        android:id="@+id/ipText"
-        android:hint="접속할 ip를 입력해주세요"
+
+    <ImageView
+        android:id="@+id/ipImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+        android:layout_above="@+id/joinBtn"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/input_ip" />
 
+    <EditText
+        android:id="@+id/ipText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/ipImage"
+        android:layout_below="@+id/ipImage"
+        android:hint="접속할 ip를 입력해주세요"
+        android:textColor="#ffffffff"
+        android:textCursorDrawable="@null" />
 
 
     <Button
+        android:id="@+id/joinBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/joinBtn"
-        android:text="connect"
-        android:layout_centerInParent="true"
-        android:layout_toRightOf="@+id/ipText"
-        android:layout_marginTop="50dp" />
+        android:layout_alignEnd="@+id/ipImage"
+        android:layout_centerVertical="true"
+        android:text="connect" />
 
 
 </RelativeLayout>

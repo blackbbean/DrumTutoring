@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.example.android.drum_1.AdapterPackage.RudimentAdapter;
@@ -66,8 +67,14 @@ public class selectRudimentActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(selectRudimentActivity.this,MainActivity.class);
-                intent.putExtra("player",i+1);
-                startActivity(intent);
+                if(i==3){
+                    Toast.makeText(getApplicationContext(),"개발진행중찡긋",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    intent.putExtra("player",i+1);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -79,139 +86,41 @@ public class selectRudimentActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        Rudiment rudiment = new Rudiment("Rudiment 1","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
+        Rudiment rudiment = new Rudiment("Rudiment 1","https://i.imgur.com/KzwGMSw.png");
         Common.rudimentList.add(rudiment);
 
-        rudiment = new Rudiment("Rudiment 2","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-
-        rudiment = new Rudiment("Rudiment 3","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-        rudiment = new Rudiment("Rudiment 4","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-        rudiment = new Rudiment("Rudiment 5","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
+        rudiment = new Rudiment("Rudiment 2","https://i.imgur.com/t1kMatS.png");
         Common.rudimentList.add(rudiment);
 
 
-        rudiment = new Rudiment("Rudiment 6","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
+        rudiment = new Rudiment("Rudiment 3","https://i.imgur.com/pg3XaP6.png");
         Common.rudimentList.add(rudiment);
 
-        rudiment = new Rudiment("Rudiment 7","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
+        rudiment = new Rudiment("Rudiment 4","https://i.imgur.com/iEIEkpq.png");
         Common.rudimentList.add(rudiment);
 
-        rudiment = new Rudiment("Rudiment 8","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-
-        rudiment = new Rudiment("Rudiment 9","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-        rudiment = new Rudiment("Rudiment 10","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-        rudiment = new Rudiment("Rudiment 11","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-        rudiment = new Rudiment("Rudiment 12","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
+        rudiment = new Rudiment("Rudiment 5","https://i.imgur.com/Jz64jnv.png");
         Common.rudimentList.add(rudiment);
 
 
-        rudiment = new Rudiment("Rudiment 13","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
+        rudiment = new Rudiment("Rudiment 6","https://i.imgur.com/FXwiPOT.png");
         Common.rudimentList.add(rudiment);
 
-        rudiment = new Rudiment("Rudiment 14","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
+        rudiment = new Rudiment("Rudiment 7","https://i.imgur.com/2DRZkPZ.png");
         Common.rudimentList.add(rudiment);
 
-        rudiment = new Rudiment("Rudiment 15","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-        rudiment = new Rudiment("Rudiment 16","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-        rudiment = new Rudiment("Rudiment 17","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-        rudiment = new Rudiment("Rudiment 18","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
+        rudiment = new Rudiment("Rudiment 8","https://i.imgur.com/ZJ5HZGQ.png");
         Common.rudimentList.add(rudiment);
 
 
-        rudiment = new Rudiment("Rudiment 19","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
+        rudiment = new Rudiment("Rudiment 9","https://i.imgur.com/7rbltxZ.png");
         Common.rudimentList.add(rudiment);
 
-        rudiment = new Rudiment("Rudiment 20","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
+        rudiment = new Rudiment("Rudiment 10","https://i.imgur.com/8CAFi5G.png");
         Common.rudimentList.add(rudiment);
 
-        rudiment = new Rudiment("Rudiment 21","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
+        rudiment = new Rudiment("Rudiment 11","https://i.imgur.com/KzwGMSw.png");
         Common.rudimentList.add(rudiment);
-
-        rudiment = new Rudiment("Rudiment 22","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-
-        rudiment = new Rudiment("Rudiment 23","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-        rudiment = new Rudiment("Rudiment 24","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-        rudiment = new Rudiment("Rudiment 25","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-        rudiment = new Rudiment("Rudiment 26","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-        rudiment = new Rudiment("Rudiment 27","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-        rudiment = new Rudiment("Rudiment 28","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-
-        rudiment = new Rudiment("Rudiment 29","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-        rudiment = new Rudiment("Rudiment 30","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-
-        rudiment = new Rudiment("Rudiment 31","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-        rudiment = new Rudiment("Rudiment 32","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-
-        rudiment = new Rudiment("Rudiment 33","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-        rudiment = new Rudiment("Rudiment 34","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-        rudiment = new Rudiment("Rudiment 35","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-
-        rudiment = new Rudiment("Rudiment 36","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-        rudiment = new Rudiment("Rudiment 37","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-        rudiment = new Rudiment("Rudiment 38","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-
-        rudiment = new Rudiment("Rudiment 39","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-        rudiment = new Rudiment("Rudiment 40","https://www.audiomart.co.za/images/db-dms141012di-bk.jpg?osCsid=5fc4e44a91adfd520b167abae231e0c8");
-        Common.rudimentList.add(rudiment);
-
-
-
 
     }
 }

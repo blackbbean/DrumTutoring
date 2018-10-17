@@ -8,6 +8,8 @@ import android.media.midi.MidiOutputPort;
 import android.media.midi.MidiSender;
 import android.util.Log;
 
+import com.example.android.drum_1.Common.Common;
+
 import java.io.IOException;
 
 /**
@@ -18,6 +20,7 @@ public class MidiOutputPortSelector extends MidiPortSelector {
     private MidiOutputPort mOutputPort;
     private MidiDispatcher mDispatcher = new MidiDispatcher();
     private MidiDevice mOpenDevice;
+
 
 
     public MidiOutputPortSelector(MidiManager midiManager, Activity activity,
@@ -48,8 +51,10 @@ public class MidiOutputPortSelector extends MidiPortSelector {
                             return;
                         }
                         //이쪽에서 연결 통신 이루어지는듯?
-                        mOutputPort.connect(mDispatcher);
-
+                        if(Common.connectFlag==false){
+                            Common.connectFlag=true;
+                            mOutputPort.connect(mDispatcher);
+                        }
                     }
                 }
             }, null);
@@ -61,6 +66,7 @@ public class MidiOutputPortSelector extends MidiPortSelector {
     public void onClose() {
         try {
             if (mOutputPort != null) {
+                Common.connectFlag=false;
                 mOutputPort.disconnect(mDispatcher);
             }
             mOutputPort = null;
