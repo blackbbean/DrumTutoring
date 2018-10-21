@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
     private MidiSynth midiDriver = new MidiSynth();
     //private List<TextView> notes;
 
-    private Button startButton;
+    private ImageButton startButton;
 
     private ImageView drum0;
     private ImageView drum1;
@@ -59,10 +60,10 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
     AnimationDrawable leftAni;
     AnimationDrawable rightAni;
 
-    private int count = 5;
+    private int count;;
     private CountDownTimer countDownTimer;
     private TextView timerText;
-    private boolean drumConnected = false;
+
 
 
 
@@ -72,12 +73,12 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
 
     String noteDirection;
     long beat;
-    String[] newString = null;
+    String[] newString;
     public static boolean flag;
     public static long trash;
     public static int currentRudi;
-    public static boolean resultFlag = false;
-    public static float scoreInt = -2;
+    public static boolean resultFlag;
+    public static float scoreInt;;
 
 
 
@@ -95,11 +96,17 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
 
         //ResultThread rt = new ResultThread();
         //t = new Thread(this);
+        flag=false;
+        resultFlag =false;
+        scoreInt = -2;
+        count = 5;
+        newString= null;
+
         timerText = (TextView)findViewById(R.id.timer);
         m = (MidiManager) getApplicationContext().getSystemService(Context.MIDI_SERVICE);
         logreceiver = new MyReceiver(this, midiDriver);
         MidiFramer connectFramer = new MidiFramer(logreceiver);
-        startButton = (Button) findViewById(R.id.btnPlay);
+        startButton = (ImageButton) findViewById(R.id.btnPlay);
         musicSheet = (ImageView)findViewById(R.id.musicSheet);
         drum0 = (ImageView)findViewById(R.id.image0);
         drum0.setBackgroundResource(R.drawable.leftdrum_animation);
@@ -127,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
         });
 
 
- 
+
         mLogSenderSelector = new MidiOutputPortSelector(m, this, R.id.spinner_senders) {
             @Override
             public void onPortSelected(final MidiPortWrapper wrapper) {
@@ -157,6 +164,7 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
                         Intent intent = new Intent(getApplicationContext(),ResultActivity.class);
                         resultFlag=false;
                         startActivity(intent);
+                        //finish();
                     }
                 }
             }
@@ -259,12 +267,15 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < newString.length; i++) {
+                int i=0;
+                while(true){
                     String[] single = new String[2];
                     if (newString[i].contains("START")) {
+                        i++;
                         continue;
                     } else if (newString[i].contains("END")) {
-                        break;
+                        i=0;
+                        continue;
                     } else {
                         single = newString[i].split(",");
                         noteDirection = single[1];
@@ -297,9 +308,10 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
+                        i++;
                     }
 
-                }//end of for loop
+                }//end of loop
 
             }
         }).start();
@@ -372,11 +384,24 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
         return super.onOptionsItemSelected(item);
     }
 
+    /*
     @Override
     protected void onResume() {
-        super.onResume();
-        midiDriver.start();
+        //super.onResume();
+        //midiDriver.start();
     }
+*/
+    /*
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        //finish();
+
+    }
+*/
+
+
 
 
     public void log(final String string) {
@@ -400,6 +425,11 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
     }
 
 
+    //TODO 이거 왜 0안나오는지 알아내기
+    //TODO 한번 플레이버튼 누른 후 타이머 안나오는 이유
+    //TODO 깜빡거림 무한루프로 바꾸기
+    //TODO 악보랑 루디먼트 음원이랑 좀 다른거 논의
+    //
     public void countDownTimer(){
         countDownTimer = new CountDownTimer(6000,1000) {
             @Override

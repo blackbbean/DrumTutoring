@@ -21,6 +21,11 @@ public class ResultActivity extends Activity {
         setContentView(R.layout.activity_result);
         noticeText = (TextView)findViewById(R.id.notice);
         noticeText.setText("Your score is " + MainActivity.scoreInt);
-        MainActivity.scoreInt=-2;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
     }
 }
