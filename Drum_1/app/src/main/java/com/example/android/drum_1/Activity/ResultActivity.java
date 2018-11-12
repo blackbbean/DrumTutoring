@@ -20,7 +20,13 @@ public class ResultActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_result);
         noticeText = (TextView)findViewById(R.id.notice);
-        noticeText.setText("Your score is " + MainActivity.scoreInt);
+
+        if(MainActivity.scoreInt==-1){
+            noticeText.setText("ERROR : 입력갯수 오류");
+        }
+        else{
+            noticeText.setText("Your score is " + MainActivity.scoreInt);
+        }
     }
 
     @Override

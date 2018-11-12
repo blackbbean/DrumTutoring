@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
 
 
     public static long realStartTime;
+    public static boolean sendFlag;
 
 
 
@@ -101,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
         scoreInt = -2;
         count = 5;
         newString= null;
+        sendFlag = false;
 
         timerText = (TextView)findViewById(R.id.timer);
         m = (MidiManager) getApplicationContext().getSystemService(Context.MIDI_SERVICE);
@@ -129,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                timerText.setVisibility(View.VISIBLE);
                 timerFunc();
             }
         });
@@ -267,15 +270,14 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
         new Thread(new Runnable() {
             @Override
             public void run() {
-                int i=0;
-                while(true){
+                for(int i=0;i<newString.length;i++){
                     String[] single = new String[2];
                     if (newString[i].contains("START")) {
-                        i++;
                         continue;
                     } else if (newString[i].contains("END")) {
-                        i=0;
-                        continue;
+                        //불들어오는데 초기화해야할듯
+                        count=5;
+                       break;
                     } else {
                         single = newString[i].split(",");
                         noteDirection = single[1];
@@ -308,7 +310,6 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        i++;
                     }
 
                 }//end of loop
@@ -446,6 +447,7 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
                 timerText.setVisibility(View.INVISIBLE);
                 realStartTime = System.nanoTime();
                 trash = realStartTime;
+                sendFlag = true;
                 PlayMusic();
             }
         };

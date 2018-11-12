@@ -63,7 +63,6 @@ public class MyReceiver extends MidiReceiver {
                 seconds = (double) monoTime / MILLIS_PER_SECOND * 100;
             sb.append(String.format(Locale.US, "%10.3f: ", seconds));
         }
-        //이거 잘 모르겠음
         sb.append(MidiPrinter.formatBytes(data, offset, count));
         sb.append(": ");
         //note on channel/note/velocity
@@ -74,47 +73,44 @@ public class MyReceiver extends MidiReceiver {
         Log.i(TAG, text);
 
 
+        if(MainActivity.sendFlag){
+            String sendData = "";
+            if(velocity!=0){
+                if(handflag==1){
+                    sendData += "L";
+                }
+                else if(handflag==2) {
+                    sendData += "R";
+                }
+                else {
+                    sendData = "AIFINISHED";
+                    MainActivity.flag = false;
+                    MainActivity.sendFlag=false;
 
-        String sendData = "";
-        if(velocity!=0){
-            if(handflag==1){
-                sendData += "L";
-            }
-            else if(handflag==2) {
-                sendData += "R";
-            }
-            else {
-                sendData = "AIFINISHED";
-                MainActivity.flag = false;
+                }
+                if(handflag!=3) {
+                    if (velocity > 150)
+                        sendData += "a";
+                    else if (velocity > 70)
+                        sendData += "b";
+                    else
+                        sendData += "c";
 
-            }
-            if(handflag!=3) {
-                if (velocity > 150)
-                    sendData += "a";
-                else if (velocity > 70)
-                    sendData += "b";
-                else
-                    sendData += "c";
-
-                sendData += seconds;
-            }
-
-            //PrintWriter out = new PrintWriter(NetworkTask.networkWriter,true);
-            if(startFlag){
-                String temp = String.valueOf(MainActivity.currentRudi);
-                MenuActivity.socketIns.sendFunc("AISTART"+temp);
-                //out.println("AISTART"+temp);
-            }
-            MenuActivity.socketIns.sendFunc(sendData);
-
-            //out.println(sendData);
-            if(sendData.contains("AIFINISHED")){
-                MainActivity.resultFlag = true;
+                    sendData += seconds;
+                }
+                //PrintWriter out = new PrintWriter(NetworkTask.networkWriter,true);
+                if(startFlag){
+                    String temp = String.valueOf(MainActivity.currentRudi);
+                    MenuActivity.socketIns.sendFunc("AISTART"+temp);
+                    //out.println("AISTART"+temp);
+                }
+                MenuActivity.socketIns.sendFunc(sendData);
+                //out.println(sendData);
+                if(sendData.contains("AIFINISHED")){
+                    MainActivity.resultFlag = true;
+                }
             }
         }
-
-
-        //가공해야함.
         midiDriver.playNote(data);
     }
 }
