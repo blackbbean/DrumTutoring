@@ -51,7 +51,7 @@ public class MyReceiver extends MidiReceiver {
         } else {
             //시간추가
             long monoTime;
-            if(!MainActivity.flag) {
+            if(MainActivity.flag == false ) {
                 monoTime= timestamp - MainActivity.realStartTime;
                 MainActivity.flag = true;
                 startFlag = true;
@@ -99,9 +99,10 @@ public class MyReceiver extends MidiReceiver {
                     sendData += seconds;
                 }
                 //PrintWriter out = new PrintWriter(NetworkTask.networkWriter,true);
-                if(startFlag){
+                if(MainActivity.aistartFlag){
                     String temp = String.valueOf(MainActivity.currentRudi);
                     MenuActivity.socketIns.sendFunc("AISTART"+temp);
+                    MainActivity.aistartFlag = false;
                     //out.println("AISTART"+temp);
                 }
                 MenuActivity.socketIns.sendFunc(sendData);

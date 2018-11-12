@@ -42,6 +42,7 @@ import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiDriver.OnMidiStartListener {
 
+    public static boolean aistartFlag;
     MidiManager m;
     MidiReceiver logreceiver;
     private TextView mLog;
@@ -86,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
     //onCreate : 레이아웃 생성,초기화 컴포넌트.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -97,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
 
         //ResultThread rt = new ResultThread();
         //t = new Thread(this);
+        aistartFlag = false;
         flag=false;
         resultFlag =false;
         scoreInt = -2;
@@ -131,6 +134,7 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 timerText.setVisibility(View.VISIBLE);
                 timerFunc();
             }
@@ -447,6 +451,7 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
                 timerText.setVisibility(View.INVISIBLE);
                 realStartTime = System.nanoTime();
                 trash = realStartTime;
+                aistartFlag = true;
                 sendFlag = true;
                 PlayMusic();
             }
