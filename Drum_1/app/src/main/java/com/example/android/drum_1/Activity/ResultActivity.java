@@ -23,9 +23,11 @@ public class ResultActivity extends Activity {
 
         if(MainActivity.scoreInt==-1){
             noticeText.setText("ERROR : 입력갯수 오류");
+            MainActivity.scoreInt = -2;
         }
         else{
             noticeText.setText("Your score is " + MainActivity.scoreInt);
+            MainActivity.scoreInt = -2;
         }
     }
 

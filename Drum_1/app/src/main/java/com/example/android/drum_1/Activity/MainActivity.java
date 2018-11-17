@@ -1,5 +1,4 @@
 package com.example.android.drum_1.Activity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
@@ -22,7 +21,6 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.android.drum_1.MidiFramer;
 import com.example.android.drum_1.MidiOutputPortSelector;
 import com.example.android.drum_1.MidiPortSelector;
@@ -31,9 +29,7 @@ import com.example.android.drum_1.MidiSynth;
 import com.example.android.drum_1.MyReceiver;
 import com.example.android.drum_1.R;
 import com.example.android.drum_1.ScopeLogger;
-
 import org.billthefarmer.mididriver.MidiDriver;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -270,7 +266,7 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
 
     //다시 수정해야
     void highlightNote() {
-
+        //TODO : 이거 다시 한번 확인해볼것 16개만큼 깜빡이는지
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -430,20 +426,13 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
     }
 
 
-    //TODO 이거 왜 0안나오는지 알아내기
-    //TODO 한번 플레이버튼 누른 후 타이머 안나오는 이유
-    //TODO 깜빡거림 무한루프로 바꾸기
     //TODO 악보랑 루디먼트 음원이랑 좀 다른거 논의
-    //
     public void countDownTimer(){
         countDownTimer = new CountDownTimer(6000,1000) {
             @Override
             public void onTick(long l) {
-
              timerText.setText(String.valueOf(count));
              count--;
-
-
             }
 
             @Override
@@ -457,8 +446,4 @@ public class MainActivity extends AppCompatActivity implements ScopeLogger,MidiD
             }
         };
     }
-
-
-
-
 }

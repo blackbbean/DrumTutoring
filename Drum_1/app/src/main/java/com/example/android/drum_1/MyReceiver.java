@@ -89,9 +89,12 @@ public class MyReceiver extends MidiReceiver {
 
                 }
                 if(handflag!=3) {
-                    if (velocity > 150)
+
+                    //why velocity max 127?
+
+                    if (velocity > 80)
                         sendData += "a";
-                    else if (velocity > 70)
+                    else if (velocity > 40)
                         sendData += "b";
                     else
                         sendData += "c";
